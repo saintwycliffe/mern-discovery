@@ -8,15 +8,27 @@ body {
   background-size:cover;
 }
 
+.gaugebox {
+  background-color: #82CFD0;
+  margin: 0 15%;
+}
+
+.circle-svg {
+  background: radial-gradient(#fff 95px,transparent 98px);
+  margin-top: -112px;
+}
+
 .qna-container {
   width: 70%;
   margin: auto;
   background-color: white;
+  margin: 10% auto;
 }
 
 .quiz-header {
   color: #AA2D29;
   font-size: 6em;
+  height: 120px;
 }
 
 .ui.inverted.header .sub.header {

@@ -30,11 +30,8 @@ export default class Gauge extends Component {
 
     render() {
       return (
-        <div>
-          <svg viewBox="0 0 400 400" width="20%" height="100%">
-          <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-            <circle cx="450" cy="40" r="20"/>
-          </svg>
+        <div className="gaugebox">
+          <svg className="circle-svg" viewBox="0 0 400 400" width="40%" height="100%">
           <div className="innerCirc"></div>
             <VictoryPie
               className="innerPie"
@@ -43,12 +40,12 @@ export default class Gauge extends Component {
               width={400} height={400}
               data={this.state.data}
               innerRadius={120}
-              cornerRadius={25}
+              cornerRadius={0}
               labels={() => null}
               style={{
                 data: { fill: (d) => {
                   const color = d.y > 30 ? "#82CFD0" : "#82CFD0";
-                  return d.x === 1 ? color : "transparent";
+                  return d.x === 1 ? color : "rgba(0,0,0,0.1)";
                 }
                 }
               }}
@@ -59,7 +56,7 @@ export default class Gauge extends Component {
                   <VictoryLabel
                     textAnchor="middle" verticalAnchor="middle"
                     x={200} y={200}
-                    text={`${Math.round(newProps.percent)}%`}
+                    text={this.props.questionnumber + '/5'}
                     style={{ fontSize: 45 }}
                   />
                 );

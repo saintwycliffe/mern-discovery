@@ -9,7 +9,7 @@
         "About 700"
       ],
       "correctAnswer": "B",
-      "correctText": "B: About 7,000"
+      "correctText": "About 7,000 languages are used in the world!"
     },
     {
       "question": "How many of those languages are waiting for a Bible translation to begin?",
@@ -19,7 +19,7 @@
         "Around 1,600"
       ],
       "correctAnswer": "C",
-      "correctText": "C: Around 1,600"
+      "correctText": "Roughly 1,600 languages await Bible Translation."
     },
     {
       "question": "Which continent has the greatest need for new Bible translation work?",
@@ -29,7 +29,7 @@
         "Africa"
       ],
       "correctAnswer": "C",
-      "correctText": "C: Africa, with over 600 languages waiting for Bible translation projects."
+      "correctText": "Africa has over 600 languages awaiting Bible translation."
     },
     {
       "question": "Which continent has the second greatest need for new Bible translation work?",
@@ -39,7 +39,7 @@
         "Americas"
       ],
       "correctAnswer": "B",
-      "correctText": "B: Asia, with over 500 languages waiting for Bible translation projects."
+      "correctText": "Asia needs 500 Bible translation projects."
     },
     {
       "question": "Which continent has the third greatest need for new Bible translation work?",
@@ -49,7 +49,7 @@
         "The Pacific"
       ],
       "correctAnswer": "C",
-      "correctText": "C: The Pacific, with over 300 languages waiting for Bible translation projects."
+      "correctText": "The Pacific needs over 300 Bible translation projects."
     },
     {
       "question": "",

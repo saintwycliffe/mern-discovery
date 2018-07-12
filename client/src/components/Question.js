@@ -83,19 +83,21 @@ export default class Question extends Component {
 
     return (
       <div>
-        <h1 className="quiz-header">Wycliffe Quiz</h1>
-        <Gauge questionper={(currentQuestion + 1)/numberOfQuestions} />
+        <h1 className="quiz-header"></h1>
         { currentQuestion < 5 &&
-        <div className="quiz-container">
-            <div className="question box">
-              <p><span>{currentQuestion + 1}/{numberOfQuestions - 1}</span>{ques}</p>
-            </div>
-            <ul onClick={this.handleClick} className="answers">
-              <Answer answerlet="a" questionnum={currentQuestion} />
-              <Answer answerlet="b" questionnum={currentQuestion} />
-              <Answer answerlet="c" questionnum={currentQuestion} />
-            </ul>
-          {/*<button className="box">Send<span>&rsaquo;</span></button>*/}
+        <div className="full-container">
+          <Gauge questionper={(currentQuestion + 1)/numberOfQuestions} questionnumber={currentQuestion + 1} />
+          <div className="quiz-container">
+              <div className="question box">
+                <p>{ques}</p>
+              </div>
+              <ul onClick={this.handleClick} className="answers">
+                <Answer answerlet="a" questionnum={currentQuestion} />
+                <Answer answerlet="b" questionnum={currentQuestion} />
+                <Answer answerlet="c" questionnum={currentQuestion} />
+              </ul>
+            {/*<button className="box">Send<span>&rsaquo;</span></button>*/}
+          </div>
         </div>
         }
         { currentQuestion === 5 &&

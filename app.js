@@ -13,12 +13,6 @@ app.use(bodyParser.json({limit: "50mb"}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
 app.use(express.static(path.resolve(__dirname, 'client', 'build')));
 
-app.use(function(req, res, next) {
-  // before every route, attach the flash messages and current user to res.locals
-  // res.locals.currentUser = req.user;
-  next();
-});
-
 // Controllers
 // app.use('/auth', require('./routes/auth'));
 
