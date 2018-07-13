@@ -39,26 +39,20 @@ body {
 .ui.inverted.header .sub.header {
   font-size: 3em !important;
   color: white !important;
-  animation-delay: 4s;
   animation: fadeIn 4s;
   padding: 11%;
-}
-
-.boxy {
+  height: 560px;
 }
 
 .boxy.green {
   color: white !important;
+  border: 1px solid #AA2D29 !important;
   background-color: #AA2D29 !important;
-  font-family: times;
+  font-weight: bold !important;
 }
 
 .boxy.green span {
   background-color: #AA2D29 !important;
-}
-
-.dimmer {
-  animation: fadeIn 1.5s;
 }
 
 .ui.dimmer {
@@ -71,16 +65,6 @@ body {
 
 #blueback {
   background-color: #005A64 !important;
-}
-
-@@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
 }
 
 .tests {
@@ -210,22 +194,6 @@ h1 {
   margin-top: 12px;
 }
 
-/* .quiz-container .answers .answer span:not([class^=checkmark]) {
-    background-color: #82CFD0;
-    color: white;
-    display: block;
-    float: left;
-    margin-left: -15px;
-    margin-top: 0px;
-    margin-bottom: -21px;
-    margin-right: 1359px;
-    padding: 76px 0;
-    text-align: center;
-    text-transform: uppercase;
-    width: 40px;
-    height: 170px;
-} */
-
 .quiz-container button {
   background-color: #82CFD0;
   color: #fff;
@@ -261,4 +229,30 @@ h1 {
   background: #82CFD0 !important;
   color: black !important;
   border: 6px solid black;
+}
+
+.touch-continue {
+  color: #FFC600 !important; 
+}
+
+.quiz-end {
+  background-color: #82CFD0;
+}
+
+.final-score {
+  color: #AA2D29;
+}
+
+.final-score-h1 {
+  color: black !important;
+  line-height: 1.5;
+  font-size: 70px;
+}
+
+.endblue {
+  background-color: #82CFD0;
+}
+
+.quiz-complete-h2 {
+  margin-bottom: 90px;
 }

@@ -39,7 +39,7 @@ export default class Question extends Component {
       this.state.question === numberOfQuestions - 1 ? console.log('win condition?') : nextQ = this.state.question + 1;
       this.setState({ question: nextQ });
       this.state.question === 0 ? this.setState({ question: 1}) : console.log('Do nothing.');
-    }, 1300)
+    }, 1000)
     setTimeout(() => {
       // this.handleClose();
     }, 3000)
@@ -92,11 +92,9 @@ export default class Question extends Component {
         </div>
       )
     }
-    function redback() {return 'redback'}
-    function blueback() {return 'blueback'}
 
     return (
-      <div>
+      <div className={this.state.question >= 5? 'endblue' : 'nothing'}>
         <h1 className="quiz-header"></h1>
         { currentQuestion < 5 &&
         <div className="full-container">
@@ -116,15 +114,18 @@ export default class Question extends Component {
         }
         { currentQuestion === 5 &&
           <div>
-          <h2>End of Quiz</h2>
-          <h1>You got {this.state.score} out of {this.state.question} correct!</h1>
+          <h2 className="quiz-complete-h2">Quiz Complete</h2>
+          <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
+            <br /> out of <span className="final-score">{this.state.question}</span>
+            <br />correct!
+          </h1>
           </div>
         }
-          <Dimmer id={this.state.correct? blueback() : redback()} active={active} onClick={this.handleClose} page>
+          <Dimmer id={this.state.correct? 'blueback' : 'redback'} active={active} onClick={this.handleClose} page>
             <Header as='h2' icon inverted>
               {this.state.correct ? correct() : incorrect()}
               <Header.Subheader className="subtext">{fullAnswer}</Header.Subheader>
-              <Icon name='hand pointer outline' />Touch to continue...
+              <div className="touch-continue"><Icon name='hand pointer outline' />Touch to continue...</div>
             </Header>
           </Dimmer>
           <br /><br />

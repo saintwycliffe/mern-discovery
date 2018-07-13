@@ -17,10 +17,6 @@ export default class Answer extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   toggleVisibility = (e) => {
     this.toggle();
-    // let answered = e.target.innerText.charAt(0);
-    // let answer = quiz[0].questions[0].correctAnswer;
-    // console.log('The link was clicked.', answered);
-    // console.log(answer, quiz[0].questions[0]);
     this.setState({ visible: !this.state.visible })
     setTimeout(() => {this.toggle()}, 1500)
   }
@@ -48,8 +44,6 @@ export default class Answer extends Component {
           return 2;
         }
       }
-    // console.log(letterToNum(), 'sons of guns');
-    // console.log('Passing PROPS!', this.props);
     let option = quiz[0].questions[questionnum].answers[letterToNum()];
 
     return (
