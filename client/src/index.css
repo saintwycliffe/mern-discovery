@@ -157,9 +157,11 @@ h1 {
 .quiz-container .answers .answer {
   background-color: #fff;
   color: #82CFD0;
-  margin-top: 76px;
-  margin-bottom: 76px;
+  margin-top: 60px;
+  margin-bottom: 40px;
   position: relative;
+  height: 70px;
+  border: 1px solid;
 }
 .quiz-container .answers .answer:hover, .quiz-container .answers .answer.active {
   cursor: pointer;
@@ -182,11 +184,15 @@ h1 {
   float: left;
   margin-left: -15px;
   margin-top: -10px;
-  margin-right: 20px;
-  padding: 10px 0;
+  margin-right: 8px;
+  padding: 25px 0;
   text-align: center;
   text-transform: uppercase;
-  width: 40px;
+  width: 73px;
+}
+
+.p-answer {
+  margin-top: 12px;
 }
 
 /* .quiz-container .answers .answer span:not([class^=checkmark]) {
@@ -235,7 +241,14 @@ h1 {
     font-weight: bold;
 }
 
+.bbutn {
+  position: absolute;
+  left: 50%;
+  margin: 160px -40px;
+}
+
 .ui.button {
   background: #82CFD0 !important;
-  color: white !important;
+  color: black !important;
+  border: 6px solid black;
 }

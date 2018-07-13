@@ -55,7 +55,7 @@ export default class Answer extends Component {
     return (
           <Transition animation={animation} duration={duration} visible={visible}>
             <li onClick={this.toggleVisibility} className={boxyClass.join(' ') + xtraNames} >
-              <p onClick={this.toggle.bind(this)}><span>{this.props.answerlet}</span>{option}</p>
+              <span>{this.props.answerlet}</span><p className="p-answer" onClick={this.toggle.bind(this)}>{option}</p>
             </li>
           </Transition>
     )

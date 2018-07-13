@@ -114,7 +114,12 @@ export default class Question extends Component {
             </Header>
           </Dimmer>
           <br /><br />
-          <Button circular icon='redo' size='massive' onClick={this.handleReset} />Retry
+          <div className="bbutn">
+            <Button circular icon='redo' color='black' size='massive' onClick={this.handleReset} />
+            <br />
+            <br /> 
+            <p>Start Again?</p>
+          </div>
       </div>
     )
   }
