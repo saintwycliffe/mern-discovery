@@ -78,8 +78,22 @@ export default class Question extends Component {
     if(this.state.addClass) {
         boxyClass.push('green');
       }
-    function correct() { return 'That\'s right!' }
-    function incorrect() { return 'Not quite!' }
+    function correct() { return (
+        <div>
+        <i class="check icon"></i>
+        <p>Correct!</p>
+        </div>
+      )
+    }
+    function incorrect() { return (
+        <div>
+        <i class="times icon"></i>
+        <p>Incorrect!</p>
+        </div>
+      )
+    }
+    function redback() {return 'redback'}
+    function blueback() {return 'blueback'}
 
     return (
       <div>
@@ -106,7 +120,7 @@ export default class Question extends Component {
           <h1>You got {this.state.score} out of {this.state.question} correct!</h1>
           </div>
         }
-          <Dimmer active={active} onClick={this.handleClose} page>
+          <Dimmer id={this.state.correct? blueback() : redback()} active={active} onClick={this.handleClose} page>
             <Header as='h2' icon inverted>
               {this.state.correct ? correct() : incorrect()}
               <Header.Subheader className="subtext">{fullAnswer}</Header.Subheader>
@@ -117,7 +131,7 @@ export default class Question extends Component {
           <div className="bbutn">
             <Button circular icon='redo' color='black' size='massive' onClick={this.handleReset} />
             <br />
-            <br /> 
+            <br />
             <p>Start Again?</p>
           </div>
       </div>
