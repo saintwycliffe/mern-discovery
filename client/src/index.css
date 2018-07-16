@@ -229,10 +229,11 @@ h1 {
   background: #82CFD0 !important;
   color: black !important;
   border: 6px solid black;
+  /* transform: scale(1.5); */
 }
 
 .touch-continue {
-  color: #FFC600 !important; 
+  color: #FFC600 !important;
 }
 
 .quiz-end {
