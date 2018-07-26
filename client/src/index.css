@@ -2,11 +2,19 @@ html {
   cursor: none;
 }
 
+@font-face {
+  font-family: 'Gotham SSm A';
+  src: local('Gotham SSm A'), url(./fonts/GothamSSm-Book.otf) format('otf');
+}
+
+h1, h2, h3, p {
+  font-family: "Gotham SSm A", "Gotham SSm B", Verdana, sans-serif !important;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: "Gotham SSm A", "Gotham SSm B", Verdana, sans-serif !important;
-  /* background: url(http://www.fillmurray.com/460/300); */
   background: #82CFD0 !important;
   background-repeat:no-repeat;
   background-size:cover;
@@ -28,6 +36,7 @@ body {
   margin: auto;
   background-color: white;
   margin: 10% auto;
+  margin-top: 25vh;
 }
 
 .quiz-header {
@@ -88,7 +97,6 @@ body {
 }
 
 .tests > p {
-  font-family: helvetica;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -168,7 +176,6 @@ h1 {
   border: 1px solid;
 }
 .quiz-container .answers .answer:hover, .quiz-container .answers .answer.active {
-  /* cursor: pointer; */
   color: #82CFD0;
   background-color: #82CFD0;
 }
@@ -211,7 +218,6 @@ h1 {
 }
 .quiz-container button:hover {
   background-color: #AA2D29;
-  cursor: pointer;
 }
 .quiz-container button span {
   font-size: 200%;
@@ -235,8 +241,7 @@ h1 {
 .ui.button {
   background: #82CFD0 !important;
   color: black !important;
-  border: 6px solid black;
-  /* transform: scale(1.5); */
+  border: 6px solid black !important;
 }
 
 .touch-continue {
