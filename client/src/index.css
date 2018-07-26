@@ -1,11 +1,16 @@
+html {
+  cursor: none;
+}
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: "Gotham SSm A", "Gotham SSm B", Verdana, sans-serif !important;
   /* background: url(http://www.fillmurray.com/460/300); */
-  background-color: #82CFD0;
+  background: #82CFD0 !important;
   background-repeat:no-repeat;
   background-size:cover;
+  overflow-y: hidden;
 }
 
 .gaugebox {
@@ -46,13 +51,13 @@ body {
 
 .boxy.green {
   color: white !important;
-  border: 1px solid #AA2D29 !important;
-  background-color: #AA2D29 !important;
+  border: 1px solid #82CFD0 !important;
+  background-color: #82CFD0 !important;
   font-weight: bold !important;
 }
 
 .boxy.green span {
-  background-color: #AA2D29 !important;
+  background-color: #82CFD0 !important;
 }
 
 .ui.dimmer {
@@ -163,11 +168,13 @@ h1 {
   border: 1px solid;
 }
 .quiz-container .answers .answer:hover, .quiz-container .answers .answer.active {
-  cursor: pointer;
-  color: #AA2D29;
+  /* cursor: pointer; */
+  color: #82CFD0;
+  background-color: #82CFD0;
 }
+
 .quiz-container .answers .answer:hover span:not([class^=checkmark]), .quiz-container .answers .answer.active span:not([class^=checkmark]) {
-  background-color: #AA2D29;
+  background-color: #82CFD0;
 }
 .quiz-container .answers .answer.active span.checkmark {
   background-color: #fff;
