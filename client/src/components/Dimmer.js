@@ -9,10 +9,8 @@ export default class Dimmerr extends Component {
 
   render() {
     const { active } = this.state
-
     return (
       <div>
-        {/*<Button content='Show' icon='plus' labelPosition='left' onClick={this.handleOpen} />*/}
         <Dimmer active={active} onClick={this.handleClose} page>
           <Header as='h2' icon inverted>
             <Icon name='hand pointer outline' />

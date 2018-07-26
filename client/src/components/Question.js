@@ -21,15 +21,14 @@ export default class Question extends Component {
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   handleClick(e) {
     e.preventDefault();
-    console.log('The link was clicked.', e.target.innerHTML);
+    // console.log('The link was clicked.', e.target.innerHTML);
     let answered = e.target.innerText.charAt(0);
     let currentQ = this.state.question;
     let answer = quiz[0].questions[currentQ].correctAnswer;
     let currentScore = this.state.score;
     answered === answer ? this.setState({ correct: true, score: currentScore + 1 }) : this.setState({ correct: false });
-    console.log('The link was clicked.', answered);
-    console.log(answer, quiz[0].questions[0]);
-    // this.setState({ active: true });
+    // console.log('The link was clicked.', answered);
+    // console.log(answer, quiz[0].questions[0]);
     setTimeout(() => {
       this.handleOpen();
     }, 1000)
@@ -38,21 +37,22 @@ export default class Question extends Component {
       let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 5
       this.state.question === numberOfQuestions - 1 ? console.log('win condition?') : nextQ = this.state.question + 1;
       this.setState({ question: nextQ });
-      this.state.question === 0 ? this.setState({ question: 1}) : console.log('Do nothing.');
+      if (this.state.question === 0) { this.setState({ question: 1}) };
     }, 1000)
-    setTimeout(() => {
-      // this.handleClose();
-    }, 3000)
   }
   handleOpen = () => this.setState({ active: true })
-  // handleClose = () => this.setState({ active: false })
   handleClose = () => {
     let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 6
     if (this.state.question === numberOfQuestions - 1){
-      console.log('Take win condition action on close'); // ? How keep score -> props down
       this.setState({ active: false })
     }
     this.setState({ active: false })
+  }
+
+  someMethod() {
+      // Force a render without state change...
+      console.log('cliked again')
+      this.forceUpdate();
   }
 
   handleReset(e) {
@@ -64,6 +64,7 @@ export default class Question extends Component {
           correct: true,
           score: 0,
           question: 0 });
+    this.someMethod();
   }
 
   render() {
@@ -80,14 +81,14 @@ export default class Question extends Component {
       }
     function correct() { return (
         <div>
-        <i class="check icon"></i>
+        <i className="check icon"></i>
         <p>Correct!</p>
         </div>
       )
     }
     function incorrect() { return (
         <div>
-        <i class="times icon"></i>
+        <i className="times icon"></i>
         <p>Incorrect!</p>
         </div>
       )
