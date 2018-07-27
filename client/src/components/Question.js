@@ -49,10 +49,28 @@ export default class Question extends Component {
     this.setState({ active: false })
   }
 
-  someMethod() {
-      // Force a render without state change...
-      console.log('cliked again')
-      this.forceUpdate();
+  endOfGame(callme) {
+      setTimeout(() => {
+        console.log('End of Game, write reset');
+        this.setState({
+              active: false,
+              addClass: false,
+              correct: true,
+              score: 0,
+              question: 0 });
+        this.props.restartGame(callme);
+        // let t;
+        // window.onload = resetTimer;
+        // document.onmousemove = resetTimer;
+        // document.onkeypress = resetTimer;
+        // function logout() {
+        //     console.log("You are now logged out.")
+        // }
+        // function resetTimer() {
+        //     clearTimeout(t);
+        //     t = setTimeout(logout, 3000)
+        //   }
+      }, 3000);
   }
 
   handleReset(e) {
@@ -64,7 +82,7 @@ export default class Question extends Component {
           correct: true,
           score: 0,
           question: 0 });
-    this.someMethod();
+    // this.endOfGame();
   }
 
   render() {
@@ -93,6 +111,7 @@ export default class Question extends Component {
         </div>
       )
     }
+    const displayNot = { display: 'none' };
 
     return (
       <div className={this.state.question >= 5? 'endblue' : 'nothing'}>
@@ -115,6 +134,7 @@ export default class Question extends Component {
         }
         { currentQuestion === 5 &&
           <div>
+          <div style={displayNot}>{this.state.active ? null : this.endOfGame(true) }</div>
           <h2 className="quiz-complete-h2">Quiz Complete</h2>
           <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
             <br /> out of <span className="final-score">{this.state.question}</span>

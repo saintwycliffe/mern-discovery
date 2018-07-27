@@ -5,6 +5,21 @@ import Question from './components/Question';
 
 
 class App extends Component {
+  constructor(props){
+    super(props);
+    this.state = {
+      makeActive: true
+    }
+  }
+
+  changeDimmerStatus = () => {
+    this.setState({ makeActive: false })
+  }
+
+  triggerEnd = (callme) => {
+    this.setState({ makeActive: true })
+  }
+  // this.props.passD ? this.setState({ active: true }) : null
 
   render() {
     return (
@@ -13,8 +28,8 @@ class App extends Component {
           <p>In Testing Mode</p>
         </div>
         <div className="qna-container">
-          <Question />
-          <Dimmerr />
+          <Question restartGame={this.triggerEnd} />
+          <Dimmerr passD={this.state.makeActive} retriggerOpenScreen={this.changeDimmerStatus} />
         </div>
       </div>
     );
