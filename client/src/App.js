@@ -19,7 +19,6 @@ class App extends Component {
   triggerEnd = (callme) => {
     this.setState({ makeActive: true })
   }
-  // this.props.passD ? this.setState({ active: true }) : null
 
   render() {
     return (

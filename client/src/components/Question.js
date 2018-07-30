@@ -21,18 +21,38 @@ export default class Question extends Component {
     this.handleReset = this.handleReset.bind(this);
     }
 
+  componentDidUpdate() {
+    let t;
+    window.onload = resetTimer;
+    document.onmousemove = resetTimer;
+    document.onkeypress = resetTimer;
+    let binding = this;
+    function logout() {
+        binding.doReset();
+        binding.props.restartGame();
+    }
+    function resetTimer() {
+        clearTimeout(t);
+        t = setTimeout(logout, 40000)
+      }
+  }
+  doReset = () => {
+    this.setState({
+          active: false,
+          addClass: false,
+          correct: true,
+          score: 0,
+          question: 0 });
+  }
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
   handleClick(e) {
     e.preventDefault();
-    // console.log('The link was clicked.', e.target.innerHTML);
     let answered = e.target.innerText.charAt(0);
     let currentQ = this.state.question;
     let answer = quiz[0].questions[currentQ].correctAnswer;
     let currentScore = this.state.score;
     answered === answer ? this.setState({ correct: true, score: currentScore + 1 }) : this.setState({ correct: false });
-    // console.log('The link was clicked.', answered);
-    // console.log(answer, quiz[0].questions[0]);
     setTimeout(() => {
       this.handleOpen();
     }, 1000)
@@ -55,28 +75,14 @@ export default class Question extends Component {
   onButtonReset = (e) => {this.toggleVisibility(e); this.handleReset(e);}
   endOfGame(callme) {
       setTimeout(() => {
-        console.log('End of Game, write reset');
         this.setState({
               active: false,
               addClass: false,
               correct: true,
               score: 0,
               question: 0 });
-        this.props.restartGame(callme);
-        // let t;
-        // window.onload = resetTimer;
-        // document.onmousemove = resetTimer;
-        // document.onkeypress = resetTimer;
-        // function logout() {
-        //     console.log("You are now logged out.")
-        // }
-        // function resetTimer() {
-        //     clearTimeout(t);
-        //     t = setTimeout(logout, 3000)
-        //   }
-      }, 3000);
+      }, 10000);
   }
-
   handleReset(e) {
     e.preventDefault();
     console.log('clicked');
