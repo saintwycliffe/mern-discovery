@@ -178,12 +178,12 @@ h1 {
   border: 3px solid;
 }
 .quiz-container .answers .answer:hover, .quiz-container .answers .answer.active {
-  color: #82CFD0;
-  background-color: #82CFD0;
+  /* color: #82CFD0;
+  background-color: #82CFD0; */
 }
 
 .quiz-container .answers .answer:hover span:not([class^=checkmark]), .quiz-container .answers .answer.active span:not([class^=checkmark]) {
-  background-color: #82CFD0;
+  /* background-color: #82CFD0; */
 }
 .quiz-container .answers .answer.active span.checkmark {
   background-color: #fff;

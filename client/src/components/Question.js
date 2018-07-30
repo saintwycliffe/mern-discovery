@@ -23,9 +23,7 @@ export default class Question extends Component {
 
   componentDidUpdate() {
     let t;
-    window.onload = resetTimer;
     document.onmousemove = resetTimer;
-    document.onkeypress = resetTimer;
     let binding = this;
     function logout() {
         binding.doReset();
@@ -59,7 +57,7 @@ export default class Question extends Component {
     setTimeout(() => {
       let nextQ = 0;
       let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 5
-      this.state.question === numberOfQuestions - 1 ? console.log('win condition?') : nextQ = this.state.question + 1;
+      this.state.question === numberOfQuestions - 1 ? null : nextQ = this.state.question + 1;
       this.setState({ question: nextQ });
       if (this.state.question === 0) { this.setState({ question: 1}) };
     }, 1000)
@@ -73,25 +71,9 @@ export default class Question extends Component {
     this.setState({ active: false })
   }
   onButtonReset = (e) => {this.toggleVisibility(e); this.handleReset(e);}
-  endOfGame(callme) {
-      setTimeout(() => {
-        this.setState({
-              active: false,
-              addClass: false,
-              correct: true,
-              score: 0,
-              question: 0 });
-      }, 10000);
-  }
   handleReset(e) {
     e.preventDefault();
-    console.log('clicked');
-    this.setState({
-          active: false,
-          addClass: false,
-          correct: true,
-          score: 0,
-          question: 0 });
+    this.doReset();
   }
 
   render() {
@@ -121,7 +103,6 @@ export default class Question extends Component {
         </div>
       )
     }
-    const displayNot = { display: 'none' };
 
     return (
       <div className={this.state.question >= 5? 'endblue' : 'nothing'}>
@@ -144,7 +125,6 @@ export default class Question extends Component {
         }
         { currentQuestion === 5 &&
           <div>
-          <div style={displayNot}>{this.state.active ? null : this.endOfGame(true) }</div>
           <h2 className="quiz-complete-h2">Quiz Complete</h2>
           <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
             <br /> out of <span className="final-score">{this.state.question}</span>
