@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import quiz from '../Quiz.json';
 import Answer from './Answer';
-import { Dimmer, Header, Icon, Button } from 'semantic-ui-react';
+import { Dimmer, Header, Icon, Button, Transition } from 'semantic-ui-react';
 import Gauge from './Victory.js';
 
 export default class Question extends Component {
@@ -12,13 +12,17 @@ export default class Question extends Component {
       addClass: false,
       correct: true,
       score: 0,
-      question: 0
+      question: 0,
+      animation: 'pulse',
+      duration: 500,
+      visible: true
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleReset = this.handleReset.bind(this);
     }
 
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+  toggleVisibility = () => this.setState({ visible: !this.state.visible })
   handleClick(e) {
     e.preventDefault();
     // console.log('The link was clicked.', e.target.innerHTML);
@@ -48,7 +52,7 @@ export default class Question extends Component {
     }
     this.setState({ active: false })
   }
-
+  onButtonReset = (e) => {this.toggleVisibility(e); this.handleReset(e);}
   endOfGame(callme) {
       setTimeout(() => {
         console.log('End of Game, write reset');
@@ -82,10 +86,10 @@ export default class Question extends Component {
           correct: true,
           score: 0,
           question: 0 });
-    // this.endOfGame();
   }
 
   render() {
+    const { animation, duration, visible } = this.state
     let currentQuestion = this.state.question;
     const { active } = this.state
     let numberOfQuestions = Object.keys(quiz[0].questions).length;
@@ -151,7 +155,9 @@ export default class Question extends Component {
           </Dimmer>
           <br /><br />
           <div className="bbutn">
-            <Button circular icon='redo' color='black' size='massive' onClick={this.handleReset} />
+            <Transition animation={animation} duration={duration} visible={visible}>
+              <Button circular icon='redo' color='black' size='massive' onClick={this.onButtonReset} />
+            </Transition>
             <br />
             <br />
             <p>Start Again?</p>
