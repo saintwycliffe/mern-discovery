@@ -1,5 +1,5 @@
 html {
-  /* cursor: none; */
+  cursor: none;
 }
 
 @font-face {
@@ -20,7 +20,7 @@ body {
   background: #82CFD0 !important;
   background-repeat:no-repeat;
   background-size:cover;
-  /* overflow-y: hidden; */
+  overflow-y: hidden;
 }
 
 .gaugebox {
