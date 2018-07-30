@@ -4,17 +4,19 @@ html {
 
 @font-face {
   font-family: 'Gotham SSm A';
-  src: local('Gotham SSm A'), url(./fonts/GothamSSm-Book.otf) format('otf');
+  src: local('Gotham SSm'), local('Gotham'),
+    url(./fonts/GothamSSm-Book.otf) format('otf');
 }
 
 h1, h2, h3, p {
-  font-family: "Gotham SSm A", "Gotham SSm B", Verdana, sans-serif !important;
+  font-family: "Gotham SSm", Verdana, sans-serif !important;
+  color: black !important;
 }
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Gotham SSm A", "Gotham SSm B", Verdana, sans-serif !important;
+  font-family: "Gotham SSm", "Gothamdeb" Verdana, sans-serif !important;
   background: #82CFD0 !important;
   background-repeat:no-repeat;
   background-size:cover;
@@ -173,7 +175,7 @@ h1 {
   margin-bottom: 40px;
   position: relative;
   height: 70px;
-  border: 1px solid;
+  border: 3px solid;
 }
 .quiz-container .answers .answer:hover, .quiz-container .answers .answer.active {
   color: #82CFD0;
@@ -198,7 +200,7 @@ h1 {
   margin-left: -15px;
   margin-top: -22px;
   margin-right: 8px;
-  padding: 25px 0;
+  padding: 23px 0;
   text-align: center;
   text-transform: uppercase;
   width: 73px;
