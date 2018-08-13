@@ -98,7 +98,7 @@ export default class Question extends Component {
         <h1 className="quiz-header"></h1>
         { currentQuestion < finishState &&
         <div className="full-container">
-          <Gauge questionper={(currentQuestion + 1)/numberOfQuestions} questionnumber={currentQuestion + 1} />
+          <Gauge finished={finishState} questionper={(currentQuestion + 1)/numberOfQuestions} questionnumber={currentQuestion + 1} />
           <div className="quiz-container">
               <div className="question box">
                 <p>{ques}</p>

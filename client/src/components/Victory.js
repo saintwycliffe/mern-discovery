@@ -56,7 +56,7 @@ export default class Gauge extends Component {
                   <VictoryLabel
                     textAnchor="middle" verticalAnchor="middle"
                     x={200} y={200}
-                    text={this.props.questionnumber + '/5'}
+                    text={this.props.questionnumber + '/' + this.props.finished}
                     style={{ fontSize: 45 }}
                   />
                 );
