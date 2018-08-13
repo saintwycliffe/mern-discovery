@@ -54,7 +54,7 @@ body {
 
 .ui.inverted.header .sub.header {
   font-size: 3em !important;
-  color: white !important;
+  color: black !important;
   animation: fadeIn 4s;
   padding: 11%;
   height: 560px;
@@ -152,7 +152,7 @@ h1 {
 }
 .quiz-container .question span {
   background-color: #82CFD0;
-  color: white;
+  color: black;
   display: block;
   float: left;
   margin-left: -15px;
@@ -194,7 +194,7 @@ h1 {
 }
 .quiz-container .answers .answer span:not([class^=checkmark]) {
   background-color: #82CFD0;
-  color: white;
+  color: black;
   display: block;
   float: left;
   margin-left: -15px;

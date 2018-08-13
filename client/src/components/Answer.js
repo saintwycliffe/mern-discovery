@@ -49,7 +49,7 @@ export default class Answer extends Component {
     return (
           <Transition animation={animation} duration={duration} visible={visible}>
             <li onClick={this.toggleVisibility} className={boxyClass.join(' ') + xtraNames} >
-              <div className="p-answer" onClick={this.toggle.bind(this)}>
+              <div className="p-answer" style={styled} onClick={this.toggle.bind(this)}>
                 <span>{this.props.answerlet}</span>
                 {option}
               </div>
@@ -57,4 +57,8 @@ export default class Answer extends Component {
           </Transition>
     )
   }
+}
+
+const styled = {
+  color: 'black'
 }
