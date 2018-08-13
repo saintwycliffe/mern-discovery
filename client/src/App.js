@@ -19,7 +19,6 @@ class App extends Component {
   render() {
     let gamePlay = "";
     if(this.state.makeActive) {
-      console.log('reached tru')
       gamePlay = (
         <Question restartGame={this.triggerEnd} />
       )

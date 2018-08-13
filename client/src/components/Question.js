@@ -22,11 +22,11 @@ export default class Question extends Component {
     this.handleReset = this.handleReset.bind(this);
     }
 
-triggerReset = () => {
-        this.props.restartGame();
-      }
-
-  doReset = () => {
+  triggerReset = () => {
+    this.props.restartGame();
+  }
+  handleReset(e) {
+    e.preventDefault();
     this.setState({
           active: false,
           addClass: false,
@@ -63,16 +63,13 @@ triggerReset = () => {
     this.setState({ active: false })
   }
   onButtonReset = (e) => {this.toggleVisibility(e); this.handleReset(e);}
-  handleReset(e) {
-    e.preventDefault();
-    this.doReset();
-  }
 
   render() {
     const { animation, duration, visible } = this.state
     let currentQuestion = this.state.question;
     const { active } = this.state
     let numberOfQuestions = Object.keys(quiz[0].questions).length;
+    let finishState = numberOfQuestions - 1;
     let dispy = 0;
     currentQuestion !== 0 ? dispy = currentQuestion - 1 : dispy = currentQuestion;
     let ques = quiz[0].questions[currentQuestion].question;
@@ -97,9 +94,9 @@ triggerReset = () => {
     }
 
     return (
-      <div className={this.state.question >= 5? 'endblue' : 'nothing'}>
+      <div className={this.state.question >= finishState? 'endblue' : 'nothing'}>
         <h1 className="quiz-header"></h1>
-        { currentQuestion < 5 &&
+        { currentQuestion < finishState &&
         <div className="full-container">
           <Gauge questionper={(currentQuestion + 1)/numberOfQuestions} questionnumber={currentQuestion + 1} />
           <div className="quiz-container">
@@ -111,11 +108,10 @@ triggerReset = () => {
                 <Answer answerlet="b" questionnum={currentQuestion} />
                 <Answer answerlet="c" questionnum={currentQuestion} />
               </ul>
-            {/*<button className="box">Send<span>&rsaquo;</span></button>*/}
           </div>
         </div>
         }
-        { currentQuestion === 5 &&
+        { currentQuestion === finishState &&
           <div>
           <h2 className="quiz-complete-h2">Quiz Complete</h2>
           <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>

@@ -7,7 +7,7 @@ export default class Dimmerr extends Component {
   handleOpen = () => this.setState({ active: true })
   handleClose = () => {
     this.setState({ active: false })
-    this.props.flipDimmer(); 
+    this.props.flipDimmer();
   }
 
   render() {
@@ -15,7 +15,6 @@ export default class Dimmerr extends Component {
 
     return (
       <div>
-        {/*<Button content='Show' icon='plus' labelPosition='left' onClick={this.handleOpen} />*/}
         <Dimmer active={active} onClick={this.handleClose} page>
           <Header as='h2' icon inverted>
             <Icon name='hand pointer outline' />
