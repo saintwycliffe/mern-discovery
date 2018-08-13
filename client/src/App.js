@@ -12,23 +12,30 @@ class App extends Component {
     }
   }
 
-  changeDimmerStatus = () => {
-    this.setState({ makeActive: false })
-  }
-
   triggerEnd = (callme) => {
-    this.setState({ makeActive: true })
+    this.setState({ makeActive: !this.state.makeActive })
   }
 
   render() {
+    let gamePlay = "";
+    if(this.state.makeActive) {
+      console.log('reached tru')
+      gamePlay = (
+        <Question restartGame={this.triggerEnd} />
+      )
+    } else {
+      gamePlay = (
+        <Dimmerr flipDimmer={this.triggerEnd} />
+      )
+    }
+
     return (
       <div className="App">
         <div className="tests">
           <p>In Testing Mode</p>
         </div>
         <div className="qna-container">
-          <Question restartGame={this.triggerEnd} />
-          <Dimmerr passD={this.state.makeActive} retriggerOpenScreen={this.changeDimmerStatus} />
+          {gamePlay}
         </div>
       </div>
     );

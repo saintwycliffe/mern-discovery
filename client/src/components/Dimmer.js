@@ -2,41 +2,25 @@ import React, { Component } from 'react'
 import { Dimmer, Header, Icon } from 'semantic-ui-react'
 
 export default class Dimmerr extends Component {
-  // state = { active: true }
-  state = { active: this.props.passD }
-  //
-  // handleOpen = () => this.setState({ active: true })
-  // handleClose = () => this.setState({ active: false })
+  state = { active: true }
 
-  // static getDerivedStateFromProps(props, state){
-  //
-  // }
-  // componentDidMount() {
-  //   console.log(this.props);
-  //   this.props.passD ? this.setState({ active: true }) : null
-  // }
+  handleOpen = () => this.setState({ active: true })
   handleClose = () => {
-    this.props.retriggerOpenScreen();
-  }
-
-  static getDerivedStateFromProps(props, state) {
-    if(props.passD === false) {
-      return { active: false }
-    } else {
-        return {active: true }
-      }
+    this.setState({ active: false })
+    this.props.flipDimmer(); 
   }
 
   render() {
-    let { active } = this.state
+    const { active } = this.state
 
     return (
       <div>
+        {/*<Button content='Show' icon='plus' labelPosition='left' onClick={this.handleOpen} />*/}
         <Dimmer active={active} onClick={this.handleClose} page>
           <Header as='h2' icon inverted>
             <Icon name='hand pointer outline' />
             Touch to Begin!
-            <Header.Subheader>Test your knowledge</Header.Subheader>
+            <Header.Subheader>Test Your Knowledge</Header.Subheader>
           </Header>
         </Dimmer>
       </div>

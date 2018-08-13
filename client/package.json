@@ -6,6 +6,7 @@
     "ajv": "^6.5.2",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-idle": "^3.0.0",
     "react-scripts": "1.1.4",
     "semantic-ui-css": "^2.3.3",
     "semantic-ui-react": "^0.81.3",

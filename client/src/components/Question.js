@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Idle from 'react-idle';
 import quiz from '../Quiz.json';
 import Answer from './Answer';
 import { Dimmer, Header, Icon, Button, Transition } from 'semantic-ui-react';
@@ -21,19 +22,10 @@ export default class Question extends Component {
     this.handleReset = this.handleReset.bind(this);
     }
 
-  componentDidUpdate() {
-    let t;
-    document.onmousemove = resetTimer;
-    let binding = this;
-    function logout() {
-        binding.doReset();
-        binding.props.restartGame();
-    }
-    function resetTimer() {
-        clearTimeout(t);
-        t = setTimeout(logout, 40000)
+triggerReset = () => {
+        this.props.restartGame();
       }
-  }
+
   doReset = () => {
     this.setState({
           active: false,
@@ -148,6 +140,11 @@ export default class Question extends Component {
             <br />
             <p>Start Again?</p>
           </div>
+          <Idle
+            timeout={40000} render= {
+              ({ idle }) => <div> { idle ? this.triggerReset() : null } </div>
+            }
+          />
       </div>
     )
   }
