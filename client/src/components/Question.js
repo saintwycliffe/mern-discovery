@@ -118,6 +118,9 @@ export default class Question extends Component {
             <br /> out of <span className="final-score">{this.state.question}</span>
             <br />correct!
           </h1>
+          { this.state.score / this.state.question === 1 &&
+            {/*}<h1>Something Special</h1>*/}
+          }
           </div>
         }
           <Dimmer id={this.state.correct? 'blueback' : 'redback'} active={active} onClick={this.handleClose} page>

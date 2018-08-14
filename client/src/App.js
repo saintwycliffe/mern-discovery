@@ -3,7 +3,6 @@ import './App.css';
 import Dimmerr from './components/Dimmer';
 import Question from './components/Question';
 
-
 class App extends Component {
   constructor(props){
     super(props);
