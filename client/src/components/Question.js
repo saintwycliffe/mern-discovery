@@ -139,11 +139,13 @@ export default class Question extends Component {
             <br />
             <p>Start Again?</p>
           </div>
+          {/*
           <Idle
             timeout={40000} render= {
               ({ idle }) => <div> { idle ? this.triggerReset() : null } </div>
             }
           />
+          */}
       </div>
     )
   }
