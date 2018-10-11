@@ -119,7 +119,7 @@ export default class Question extends Component {
             <br />correct!
           </h1>
           { this.state.score / this.state.question === 1 &&
-            {/*}<h1>Something Special</h1>*/}
+            <h1><br />Great Job! <br /><br />Now you can advocate<br /> for world-wide bible translation!</h1>
           }
           </div>
         }
