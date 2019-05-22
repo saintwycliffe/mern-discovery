@@ -6,7 +6,7 @@ import { Dimmer, Header, Icon, Button, Transition } from 'semantic-ui-react';
 import Gauge from './Victory.js';
 
 export default class Question extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
       active: false,
@@ -20,22 +20,27 @@ export default class Question extends Component {
     };
     this.handleClick = this.handleClick.bind(this);
     this.handleReset = this.handleReset.bind(this);
-    }
+  }
 
   triggerReset = () => {
     this.props.restartGame();
   }
+
   handleReset(e) {
     e.preventDefault();
     this.setState({
-          active: false,
-          addClass: false,
-          correct: true,
-          score: 0,
-          question: 0 });
+      active: false,
+      addClass: false,
+      correct: true,
+      score: 0,
+      question: 0
+    });
   }
+
   handleChange = (e, { name, value }) => this.setState({ [name]: value })
+
   toggleVisibility = () => this.setState({ visible: !this.state.visible })
+
   handleClick(e) {
     e.preventDefault();
     let answered = e.target.innerText.charAt(0);
@@ -43,63 +48,67 @@ export default class Question extends Component {
     let answer = quiz[0].questions[currentQ].correctAnswer;
     let currentScore = this.state.score;
     answered === answer ? this.setState({ correct: true, score: currentScore + 1 }) : this.setState({ correct: false });
+
     setTimeout(() => {
       this.handleOpen();
     }, 1000)
-    setTimeout(() => {
-      let nextQ = 0;
-      let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 5
-      this.state.question === numberOfQuestions - 1 ? null : nextQ = this.state.question + 1;
-      this.setState({ question: nextQ });
-      if (this.state.question === 0) { this.setState({ question: 1}) };
-    }, 1000)
-  }
-  handleOpen = () => this.setState({ active: true })
+
+  };
+
+  handleOpen = () => this.setState({ active: true });
+
   handleClose = () => {
-    let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 6
-    if (this.state.question === numberOfQuestions - 1){
-      this.setState({ active: false })
-    }
-    this.setState({ active: false })
+    this.setState({ active: false });
+    let nextQ = 0;
+    let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 5
+    this.state.question === numberOfQuestions - 1 ? null : nextQ = this.state.question + 1;
+    this.setState({ question: nextQ });
+    if (this.state.question === 0) { this.setState({ question: 1 }) };
   }
-  onButtonReset = (e) => {this.toggleVisibility(e); this.handleReset(e);}
+
+  onButtonReset = (e) => { this.toggleVisibility(e); this.handleReset(e); };
 
   render() {
-    const { animation, duration, visible } = this.state
+    const { animation, duration, visible } = this.state;
+    const { active } = this.state;
+
     let currentQuestion = this.state.question;
-    const { active } = this.state
     let numberOfQuestions = Object.keys(quiz[0].questions).length;
-    let finishState = numberOfQuestions - 1;
-    let dispy = 0;
-    currentQuestion !== 0 ? dispy = currentQuestion - 1 : dispy = currentQuestion;
+    let finishState = numberOfQuestions;
     let ques = quiz[0].questions[currentQuestion].question;
-    let fullAnswer = quiz[0].questions[dispy].correctText;
+    let fullAnswer = quiz[0].questions[currentQuestion].correctText;
+
     let boxyClass = ["boxy"];
-    if(this.state.addClass) {
-        boxyClass.push('green');
-      }
-    function correct() { return (
+    if (this.state.addClass) {
+      boxyClass.push('green');
+    }
+
+    function correct() {
+      return (
         <div>
-        <i className="check icon"></i>
-        <p>Correct!</p>
+          <i className="check icon"></i>
+          <p>Correct!</p>
         </div>
       )
     }
-    function incorrect() { return (
+    function incorrect() {
+      return (
         <div>
-        <i className="times icon"></i>
-        <p>Incorrect!</p>
+          <i className="times icon"></i>
+          <p>Incorrect!</p>
         </div>
       )
     }
 
     return (
-      <div className={this.state.question >= finishState? 'endblue' : 'nothing'}>
+      <div className={this.state.question >= finishState ? 'endblue' : 'nothing'}>
         <h1 className="quiz-header"></h1>
-        { currentQuestion < finishState &&
-        <div className="full-container">
-          <Gauge finished={finishState} questionper={(currentQuestion + 1)/numberOfQuestions} questionnumber={currentQuestion + 1} />
-          <div className="quiz-container">
+        {currentQuestion < finishState &&
+          <div className="full-container">
+            {!this.state.active &&
+              <Gauge activeQuestion={this.state.active} finished={finishState} questionper={(currentQuestion + 1) / numberOfQuestions} questionnumber={currentQuestion + 1} />
+            }
+            <div className="quiz-container">
               <div className="question box">
                 <p>{ques}</p>
               </div>
@@ -108,44 +117,42 @@ export default class Question extends Component {
                 <Answer answerlet="b" questionnum={currentQuestion} />
                 <Answer answerlet="c" questionnum={currentQuestion} />
               </ul>
+            </div>
           </div>
-        </div>
         }
-        { currentQuestion === finishState &&
+        {currentQuestion === finishState &&
           <div>
-          <h2 className="quiz-complete-h2">Quiz Complete</h2>
-          <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
-            <br /> out of <span className="final-score">{this.state.question}</span>
-            <br />correct!
+            <h2 className="quiz-complete-h2">Quiz Complete</h2>
+            <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
+              <br /> out of <span className="final-score">{this.state.question}</span>
+              <br />correct!
           </h1>
-          { this.state.score / this.state.question === 1 &&
-            <h1><br />Great Job! <br /><br />Now you can advocate<br /> for world-wide bible translation!</h1>
-          }
+            {this.state.score / this.state.question === 1 &&
+              <h1><br />Great Job! <br /><br />Now you can advocate<br /> for world-wide bible translation!</h1>
+            }
           </div>
         }
-          <Dimmer id={this.state.correct? 'blueback' : 'redback'} active={active} onClick={this.handleClose} page>
-            <Header as='h2' icon inverted>
-              {this.state.correct ? correct() : incorrect()}
-              <Header.Subheader className="subtext">{fullAnswer}</Header.Subheader>
-              <div className="touch-continue"><Icon name='hand pointer outline' />Touch to continue...</div>
-            </Header>
-          </Dimmer>
-          <br /><br />
-          <div className="bbutn">
-            <Transition animation={animation} duration={duration} visible={visible}>
-              <Button circular icon='redo' color='black' size='massive' onClick={this.onButtonReset} />
-            </Transition>
-            <br />
-            <br />
-            <p>Start Again?</p>
-          </div>
-          {/*
-          <Idle
-            timeout={40000} render= {
-              ({ idle }) => <div> { idle ? this.triggerReset() : null } </div>
-            }
-          />
-          */}
+        <Dimmer id={this.state.correct ? 'blueback' : 'redback'} active={active} onClick={this.handleClose} page>
+          <Header as='h2' icon inverted>
+            {this.state.correct ? correct() : incorrect()}
+            <Header.Subheader className="subtext">{fullAnswer}</Header.Subheader>
+            <div className="touch-continue"><Icon name='hand pointer outline' />Touch to continue...</div>
+          </Header>
+        </Dimmer>
+        <br /><br />
+        <div className="bbutn">
+          <Transition animation={animation} duration={duration} visible={visible}>
+            <Button circular icon='redo' color='black' size='massive' onClick={this.onButtonReset} />
+          </Transition>
+          <br />
+          <br />
+          <p>Start Again?</p>
+        </div>
+        <Idle
+          timeout={40000} render={
+            ({ idle }) => <div> {idle ? this.triggerReset() : null} </div>
+          }
+        />
       </div>
     )
   }
