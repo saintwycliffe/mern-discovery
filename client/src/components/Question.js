@@ -59,10 +59,8 @@ export default class Question extends Component {
 
   handleClose = () => {
     this.setState({ active: false });
-    let nextQ = 0;
     let numberOfQuestions = Object.keys(quiz[0].questions).length; // Currently 5
-    this.state.question === numberOfQuestions - 1 ? null : nextQ = this.state.question + 1;
-    this.setState({ question: nextQ });
+    this.setState({ question: this.state.question + 1 });
     if (this.state.question === 0) { this.setState({ question: 1 }) };
   }
 
@@ -101,9 +99,9 @@ export default class Question extends Component {
     }
 
     return (
-      <div className={this.state.question >= finishState ? 'endblue' : 'nothing'}>
+      <div className={currentQuestion + 1 >= finishState ? 'endblue' : 'nothing'}>
         <h1 className="quiz-header"></h1>
-        {currentQuestion < finishState &&
+        {currentQuestion + 1 < finishState &&
           <div className="full-container">
             {!this.state.active &&
               <Gauge activeQuestion={this.state.active} finished={finishState} questionper={(currentQuestion + 1) / numberOfQuestions} questionnumber={currentQuestion + 1} />
@@ -120,7 +118,7 @@ export default class Question extends Component {
             </div>
           </div>
         }
-        {currentQuestion === finishState &&
+        {currentQuestion + 1 === finishState &&
           <div>
             <h2 className="quiz-complete-h2">Quiz Complete</h2>
             <h1 className="final-score-h1">You got <span className="final-score">{this.state.score}</span>
